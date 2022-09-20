@@ -12,8 +12,8 @@ export const Register = () => {
         <input type="email" placeholder='Email' className="p-[15px] border-none w-[250px] placeholder:text-gray-400 border-b-blue-200" />
         <input type="password" placeholder='Password' className="p-[15px] border-none w-[250px] placeholder:text-gray-400 border-b-blue-200" />
         <input type="file" style={{display:"none"}}  id='avatar' />
-        <label for="avatar" className='cursor-pointer'>
-            <img src="" alt="" />
+        <label for="avatar" className='cursor-pointer flex  items-center'>
+            <img src="./images/avatar.png" alt="" className='h-[4rem] w-[4rem] ' />
              <small>Add an Avatar</small>
         </label>
         <button className='bg-blue-500 p-[10px] font-bold cursor-pointer text-white' type="submit">Sign up</button>
