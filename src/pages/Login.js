@@ -23,7 +23,7 @@ export const Login = () => {
         <span className='text-purple-600 font-bold text-[24px]'>Let's chat</span>
         <span className='text-[15px] text-purple-600'>Login</span>
      </div>
-     <form className='flex flex-col gap-[15px]'>
+     <form onSubmit={handleSubmit} className='flex flex-col gap-[15px]'>
         
         <input type="email" placeholder='Email' className="p-[15px] border-none w-[250px] placeholder:text-gray-400 border-b-blue-200 border-b-2" />
         <input type="password" placeholder='Password' className="p-[15px] border-none w-[250px] placeholder:text-gray-400 border-b-blue-200" />
