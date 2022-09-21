@@ -1,4 +1,5 @@
 import React from 'react'
+import { Messages } from './Messages'
 
 export const Chat = () => {
   return (
@@ -11,6 +12,7 @@ export const Chat = () => {
            <img src='./images/more.png' alt=''  className='h-[24px] cursor-pointer'/>
         </div>
       </div>
+      <Messages/>
     </div>
   )
 }
