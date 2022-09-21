@@ -41,8 +41,7 @@ const uploadTask = uploadBytesResumable(storageRef, file);
         displayName,
         email,
         photoURL:downloadURL,
-      })
-    
+      }) 
       await setDoc(doc(db,"userChats",res.user.uid),{});
        navigate("/")
     });
