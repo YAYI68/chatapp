@@ -1,4 +1,5 @@
 import React from 'react'
+import { Input } from './Input'
 import { Messages } from './Messages'
 
 export const Chat = () => {
@@ -13,6 +14,7 @@ export const Chat = () => {
         </div>
       </div>
       <Messages/>
+      <Input />
     </div>
   )
 }
