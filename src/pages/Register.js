@@ -4,9 +4,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { auth,db,storage } from '../firebaseConfig';
 import { doc, setDoc } from "firebase/firestore"; 
 import { setUserProperties } from 'firebase/analytics';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Register = () => {
+  const navigate = useNavigate();
 
  const handleSubmit = async(e)=>{
   e.preventDefault();
@@ -42,7 +44,7 @@ const uploadTask = uploadBytesResumable(storageRef, file);
       })
     
       await setDoc(doc(db,"userChats",res.user.uid),{});
-
+       navigate("/")
     });
   }
 );  
