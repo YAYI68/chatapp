@@ -3,7 +3,7 @@ import { Message } from "./Message"
 
 export const Messages = () => {
   return (
-    <div className="bg-gray-200 p-[10px] h-[calc(100% - 160px)] ">
+    <div className="bg-gray-200 overflow-scroll p-[10px] h-[auto] ">
     <Message/>
     <Message/>
     <Message/>

@@ -4,7 +4,7 @@ import { Messages } from './Messages'
 
 export const Chat = () => {
   return (
-    <div className='grow-[2]'>
+    <div className='grow-[2] flex flex-col'>
       <div className='p-2 h-[50px] text-white flex bg-gray-600 items-center justify-between'>
         <span>Yayi</span>
         <div className='flex gap-[10px]'>
