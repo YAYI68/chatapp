@@ -1,7 +1,9 @@
 import React from 'react';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { auth } from '../firebaseConfig';
+import { auth,db,storage } from '../firebaseConfig';
+import { doc, setDoc } from "firebase/firestore"; 
+import { setUserProperties } from 'firebase/analytics';
 
 
 export const Register = () => {
@@ -21,35 +23,30 @@ export const Register = () => {
   const storageRef = ref(storage, displayName);
 
 const uploadTask = uploadBytesResumable(storageRef, file); 
- uploadTask.on('state_changed', 
-  (snapshot) => {
-    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-  }, 
+ uploadTask.on(
   (error) => {
-    // Handle unsuccessful uploads
+    setUserProperties(true);
   }, 
   () => {
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+    getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
       console.log('File available at', downloadURL);
+      await updateProfile(res.user,{
+        displayName,
+        photoURL: downloadURL,
+      });
+      await setDoc(doc(db,"users",res.user.uid),{
+        uid:res.user.uid,
+        displayName,
+        email,
+        photoURL:downloadURL,
+      })
     });
   }
-);
-  
+);  
   } catch (error) {
     
   }
-// createUserWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in 
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // ..
-//   });
+
     
 
  }
