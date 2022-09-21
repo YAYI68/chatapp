@@ -40,6 +40,9 @@ const uploadTask = uploadBytesResumable(storageRef, file);
         email,
         photoURL:downloadURL,
       })
+    
+      await setDoc(doc(db,"userChats",res.user.uid),{});
+
     });
   }
 );  
