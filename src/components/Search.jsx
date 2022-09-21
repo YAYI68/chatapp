@@ -14,7 +14,6 @@ export const Search = () => {
     console.log(username)
     const q = query(collection(db, "users"), where("displayName", "==", username));
        const querySnapshot = await getDocs(q);
-       console.log({querySnapshot});
         querySnapshot.forEach((doc) => {
          setUser(doc.data());
         })
