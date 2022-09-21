@@ -13,10 +13,14 @@ export const Search = () => {
    const handleSearch = async()=>{
     console.log(username)
     const q = query(collection(db, "users"), where("displayName", "==", username));
+     try {    
        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-         setUser(doc.data());
-        })
+           querySnapshot.forEach((doc) => {
+            setUser(doc.data());
+           })
+     } catch (error) {
+      setError(true)
+     }  
         console.log(user)
    }
 
