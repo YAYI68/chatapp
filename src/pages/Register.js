@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { auth,db,storage } from '../firebaseConfig';
 import { doc, setDoc } from "firebase/firestore"; 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export const Register = () => {
@@ -73,7 +73,8 @@ const uploadTask = uploadBytesResumable(storageRef, file);
         </label>
         <button className='bg-blue-500 p-[10px] font-bold cursor-pointer text-white' type="submit">Sign up</button>
      </form>
-     <p className='text-gray-400 text-[15px] mt-[10px]'>You do have an account? login</p>
+     {error && <p>Something went wrong</p>}
+     <p className='text-gray-400 text-[15px] mt-[10px]'>You do have an account? <Link to="/register" className='text-blue-400 hover:underline'>Login</Link></p>
     </div>
   )
 }
