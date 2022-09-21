@@ -33,12 +33,14 @@ export const Search = () => {
       <div className='p-[10px]'>
         <input onKeyDown={handleKey}  onChange={(e)=>setUsername(e.target.value)} type="search" placeholder='Find a user' className='placeholder:text-gray-200 outline-none bg-transparent  text-white' />
       </div>
+      { user &&    
       <div className='hover:bg-gray-900 flex items-center text-white p-[10px] cursor-pointer'>
         <img  src={user.photoURL} alt='' className='w-[50px] h-[50px]' />
         <div>
-           <span className='text-[18px] font-semibold'>Yayi</span>
+           <span className='text-[18px] font-semibold'>{user.diplayName}</span>
         </div>
       </div> 
+      }
     </div>
   )
 }
