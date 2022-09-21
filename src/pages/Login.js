@@ -2,6 +2,7 @@
 import React from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
+import { Navigate } from 'react-router-dom';
 
 export const Login = () => {
   const handleSubmit = async(e)=>{
@@ -10,14 +11,14 @@ export const Login = () => {
     const password = e.target[1].value
    
     try {
-    const res = await signInWithEmailAndPassword(auth, email, password)
-     
+    signInWithEmailAndPassword(auth, email, password)
+    //  Navigate("/login")
     } catch (error) {
       
     }
   
    }
-  return (
+  return ( 
     <div className='bg-blue-200 h-[100vh] flex flex-col items-center justify-center'>
      <div className='flex gap-[10px] flex-col rounded-md py-[20px] px-[60px] justify-center items-center'>
         <span className='text-purple-600 font-bold text-[24px]'>Let's chat</span>
