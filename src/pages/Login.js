@@ -1,6 +1,22 @@
-import React from 'react'
+
+import React from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebaseConfig';
 
 export const Login = () => {
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    const email = e.target[0].value
+    const password = e.target[1].value
+   
+    try {
+    const res = await signInWithEmailAndPassword(auth, email, password)
+     
+    } catch (error) {
+      
+    }
+  
+   }
   return (
     <div className='bg-blue-200 h-[100vh] flex flex-col items-center justify-center'>
      <div className='flex gap-[10px] flex-col rounded-md py-[20px] px-[60px] justify-center items-center'>

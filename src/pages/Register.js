@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { auth,db,storage } from '../firebaseConfig';
 import { doc, setDoc } from "firebase/firestore"; 
-import { setUserProperties } from 'firebase/analytics';
 import { useNavigate } from 'react-router-dom';
 
 
 export const Register = () => {
+  const [ error, setError ] = useState(false);
   const navigate = useNavigate();
 
  const handleSubmit = async(e)=>{
@@ -27,7 +27,7 @@ export const Register = () => {
 const uploadTask = uploadBytesResumable(storageRef, file); 
  uploadTask.on(
   (error) => {
-    setUserProperties(true);
+    setError(true);
   }, 
   () => {
     getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
