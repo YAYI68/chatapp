@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useStateContext } from '../contexts/AuthContextProvider';
+
 
 export const Input = () => {
+   const[text,setText] =  useState("")
+  const { currentUser,data} = useStateContext();
   return (
     <div className='h-[50px] bg-white p-[10px] flex items-center justify-between'>
       <input type="text" placeholder="Type Something..." className=' grow-[9] border-none outline-none text-[18px]  text-gray-800 placeholder:text-gray-200' />

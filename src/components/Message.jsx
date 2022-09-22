@@ -1,7 +1,12 @@
 import React,{useState} from 'react'
+import { useStateContext } from '../contexts/AuthContextProvider';
+
+
 
 export const Message = ({message}) => {
   const [ owner, setOwner] = useState(true);
+  const { currentUser,data } = useStateContext();
+
   return (
     <div className={`flex gap-[20px] ${owner?'flex-row-reverse':'flex-row'}`}>
       <div className='flex flex-col text-gray-500 mb-[20px]'>
