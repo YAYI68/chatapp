@@ -8,7 +8,7 @@ import { Messages } from './Messages'
 export const Chat = () => {
    
   const { data } = useStateContext();
-
+   console.log({data})
   return (
     <div className='grow-[2] flex flex-col'>
       <div className='p-2 h-[50px] text-white flex bg-gray-600 items-center justify-between'>

@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-export const Message = () => {
+export const Message = ({message}) => {
   const [ owner, setOwner] = useState(true);
   return (
     <div className={`flex gap-[20px] ${owner?'flex-row-reverse':'flex-row'}`}>
