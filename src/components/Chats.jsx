@@ -31,7 +31,7 @@ console.log(chats)
     <div>
       { chats && 
       <>
-      {Object.entries(chats)?.map((chat)=>(
+      {Object.entries(chats)?.sort((a,b)=>a[1].date - b[1].date)?.map((chat)=>(
       <div 
       className='hover:bg-gray-900 flex items-center text-white p-[10px] cursor-pointer'
        key={chat[0]}
@@ -40,7 +40,7 @@ console.log(chats)
         <img  src={chat[1].userInfo.photoURL} alt='' className='w-[45px] h-[45px] mr-2 rounded-full' />
         <div>
            <span className='text-[18px] font-semibold'>{chat[1].userInfo.displayName}</span>
-           <p className='text-[14px] text-gray-200'>helo</p>
+           <p className='text-[14px] text-gray-200'>{chat[1].lastMessage?.text}</p>
         </div>
       </div> 
       ))}
