@@ -9,16 +9,21 @@ export const Chats = () => {
   const [ chats, setChats] = useState();
   const { currentUser } = useStateContext();
   useEffect(() => {
-    
-    const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
-     setChats(doc.data())
-  });
+    const getChats = ()=>{
+      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+       setChats(doc.data())
+    });
+    }
   
+    currentUser.uid && getChats();
+
     return () => {
-      unsub()
+      getChats()
     }
   }, [currentUser.uid])
   
+   console.log(Object.entries(chats))
+
 console.log(chats)
   return (
     <div>
